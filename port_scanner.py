@@ -386,12 +386,10 @@ class PortScanner:
             else:
                 with self.lock:
                     self.closed_ports.append(port)
-                self.print_verbose(f"{Colors.FAIL}[-] Port {port} is CLOSED{Colors.ENDC}")
                 return port, 'closed', None, None
         except socket.timeout:
             with self.lock:
                 self.filtered_ports.append(port)
-            self.print_verbose(f"{Colors.WARNING}[?] Port {port} is FILTERED{Colors.ENDC}")
             return port, 'filtered', None, None
         except Exception as e:
             self.print_verbose(f"{Colors.FAIL}[!] Error scanning port {port}: {str(e)}{Colors.ENDC}")
@@ -469,7 +467,6 @@ class PortScanner:
             if response is None:
                 with self.lock:
                     self.filtered_ports.append(port)
-                self.print_verbose(f"{Colors.WARNING}[?] Port {port} is FILTERED{Colors.ENDC}")
                 return port, 'filtered', None, None
             elif response.haslayer(TCP):
                 if response.getlayer(TCP).flags == 0x12:  # SYN-ACK
@@ -490,12 +487,10 @@ class PortScanner:
                 elif response.getlayer(TCP).flags == 0x14:  # RST-ACK
                     with self.lock:
                         self.closed_ports.append(port)
-                    self.print_verbose(f"{Colors.FAIL}[-] Port {port} is CLOSED{Colors.ENDC}")
                     return port, 'closed', None, None
             elif response.haslayer(ICMP):
                 with self.lock:
                     self.filtered_ports.append(port)
-                self.print_verbose(f"{Colors.WARNING}[?] Port {port} is FILTERED{Colors.ENDC}")
                 return port, 'filtered', None, None
         except Exception as e:
             self.print_verbose(f"{Colors.FAIL}[!] Error in SYN scan on port {port}: {str(e)}{Colors.ENDC}")
@@ -535,7 +530,6 @@ class PortScanner:
             elif response.haslayer(TCP) and response.getlayer(TCP).flags == 0x14:  # RST-ACK
                 with self.lock:
                     self.closed_ports.append(port)
-                self.print_verbose(f"{Colors.FAIL}[-] Port {port} is CLOSED{Colors.ENDC}")
                 return port, 'closed', None, None
             elif response.haslayer(ICMP):
                 with self.lock:
@@ -578,7 +572,6 @@ class PortScanner:
             elif response.haslayer(TCP) and response.getlayer(TCP).flags == 0x14:
                 with self.lock:
                     self.closed_ports.append(port)
-                self.print_verbose(f"{Colors.FAIL}[-] Port {port} is CLOSED{Colors.ENDC}")
                 return port, 'closed', None, None
             elif response.haslayer(ICMP):
                 with self.lock:
@@ -621,7 +614,6 @@ class PortScanner:
             elif response.haslayer(TCP) and response.getlayer(TCP).flags == 0x14:
                 with self.lock:
                     self.closed_ports.append(port)
-                self.print_verbose(f"{Colors.FAIL}[-] Port {port} is CLOSED{Colors.ENDC}")
                 return port, 'closed', None, None
             elif response.haslayer(ICMP):
                 with self.lock:
